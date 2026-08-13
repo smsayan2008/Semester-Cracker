@@ -1,6 +1,2 @@
 Flask==3.0.3
 gunicorn==22.0.0
-
-to run it
-
-python app.py   ---enter

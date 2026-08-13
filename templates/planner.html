@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Study Planner | Semester Cracker{% endblock %}
+{% block page_heading %}Study Planner{% endblock %}
+{% block content %}
+<section class="page-section card">
+  <div class="panel-header">
+    <h3>Study Planner</h3>
+  </div>
+
+  <form id="planner-form" class="form-grid">
+    <input type="hidden" id="plan-id" />
+    <label><span>Subject</span><input id="plan-subject" required /></label>
+    <label><span>Topic</span><input id="plan-topic" required /></label>
+    <label><span>Date</span><input id="plan-date" type="date" required /></label>
+    <label><span>Start time</span><input id="plan-start" type="time" required /></label>
+    <label><span>End time</span><input id="plan-end" type="time" required /></label>
+    <label><span>Priority</span><select id="plan-priority"><option value="High">High</option><option value="Medium" selected>Medium</option><option value="Low">Low</option></select></label>
+    <label><span>Progress</span><input id="plan-progress" type="number" min="0" max="100" value="0" /></label>
+    <div class="form-actions full-width">
+      <button type="submit" class="primary-btn">Save Plan</button>
+      <button type="button" class="secondary-btn" id="planner-reset">Clear</button>
+    </div>
+  </form>
+</section>
+
+<section class="page-section card">
+  <div class="panel-header compact">
+    <h3>Schedule</h3>
+    <div class="toolbar">
+      <select id="planner-filter">
+        <option value="all">All</option>
+        <option value="today">Today</option>
+        <option value="upcoming">Upcoming</option>
+      </select>
+    </div>
+  </div>
+  <div id="planner-list" class="planner-list"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/planner.js') }}"></script>
+{% endblock %}

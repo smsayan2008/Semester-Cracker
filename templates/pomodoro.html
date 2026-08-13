@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Pomodoro | Semester Cracker{% endblock %}
+{% block page_heading %}Pomodoro{% endblock %}
+{% block content %}
+<section class="page-section pomodoro-layout">
+  <div class="card timer-panel">
+    <div class="panel-header">
+      <h3>Focus Mode</h3>
+    </div>
+    <div class="timer-display" id="timer-display">25:00</div>
+    <div class="mode-switch">
+      <button class="mode-btn active" data-mode="focus" type="button">Focus</button>
+      <button class="mode-btn" data-mode="shortBreak" type="button">Short Break</button>
+      <button class="mode-btn" data-mode="longBreak" type="button">Long Break</button>
+    </div>
+    <div class="timer-actions">
+      <button class="primary-btn" id="start-timer">Start</button>
+      <button class="secondary-btn" id="pause-timer">Pause</button>
+      <button class="secondary-btn" id="resume-timer">Resume</button>
+      <button class="secondary-btn" id="reset-timer">Reset</button>
+    </div>
+  </div>
+
+  <div class="card stats-panel">
+    <div class="panel-header">
+      <h3>Focus stats</h3>
+    </div>
+    <div class="stat-stack">
+      <div><strong id="completed-focus-sessions">0</strong><span>Completed focus sessions</span></div>
+      <div><strong id="daily-focus-minutes">0</strong><span>Minutes today</span></div>
+      <div><strong id="total-focus-sessions">0</strong><span>Total recorded sessions</span></div>
+    </div>
+    <div class="settings-form">
+      <label><span>Focus minutes</span><input id="focus-minutes" type="number" min="1" value="25" /></label>
+      <label><span>Short break</span><input id="short-break" type="number" min="1" value="5" /></label>
+      <label><span>Long break</span><input id="long-break" type="number" min="1" value="15" /></label>
+      <button id="save-timer-settings" class="primary-btn" type="button">Save settings</button>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/pomodoro.js') }}"></script>
+{% endblock %}

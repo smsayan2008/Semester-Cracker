@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Semester Cracker{% endblock %}</title>
+    <meta name="description" content="Semester Cracker - student productivity workspace" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body data-page="{{ page }}">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">SC</div>
+          <div>
+            <h1>Semester Cracker</h1>
+            <p>Academic command center</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Main navigation">
+          <a class="nav-link {% if page == 'dashboard' %}active{% endif %}" href="/dashboard">Dashboard</a>
+          <a class="nav-link {% if page == 'tasks' %}active{% endif %}" href="/tasks">Task Manager</a>
+          <a class="nav-link {% if page == 'notes' %}active{% endif %}" href="/notes">Notes</a>
+          <a class="nav-link {% if page == 'attendance' %}active{% endif %}" href="/attendance">Attendance</a>
+          <a class="nav-link {% if page == 'cgpa' %}active{% endif %}" href="/cgpa">CGPA</a>
+          <a class="nav-link {% if page == 'planner' %}active{% endif %}" href="/planner">Study Planner</a>
+          <a class="nav-link {% if page == 'pomodoro' %}active{% endif %}" href="/pomodoro">Pomodoro</a>
+          <a class="nav-link {% if page == 'analytics' %}active{% endif %}" href="/analytics">Analytics</a>
+          <a class="nav-link {% if page == 'pdf-vault' %}active{% endif %}" href="/pdf-vault">PDF Vault</a>
+          <a class="nav-link {% if page == 'settings' %}active{% endif %}" href="/settings">Settings</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="status-dot online"></span>
+          <div>
+            <strong>Guest Workspace</strong>
+            <small id="workspace-chip">Ready</small>
+          </div>
+        </div>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Welcome back</p>
+            <h2>{% block page_heading %}Dashboard{% endblock %}</h2>
+          </div>
+
+          <div class="topbar-actions">
+            <div class="search-box">
+              <input id="global-search-input" type="search" placeholder="Search local academic data" />
+              <button id="global-search-button" type="button">Search</button>
+            </div>
+            <button id="theme-toggle" class="secondary-btn" type="button">Dark mode</button>
+            <div id="live-clock" class="clock-pill" aria-live="polite"></div>
+          </div>
+        </header>
+
+        <div id="toast-container" aria-live="polite"></div>
+
+        <main class="page-content">
+          {% block content %}{% endblock %}
+        </main>
+      </div>
+    </div>
+
+    <div id="search-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="search-modal-title">Search Results</h3>
+          <button class="close-modal" type="button" aria-label="Close search">×</button>
+        </div>
+        <div id="search-results"></div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/storage.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

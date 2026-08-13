@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Analytics | Semester Cracker{% endblock %}
+{% block page_heading %}Analytics{% endblock %}
+{% block content %}
+<section class="analytics-grid">
+  <div class="card stat-card"><span>Task completion</span><strong id="analytics-task-completion">0%</strong></div>
+  <div class="card stat-card"><span>Attendance</span><strong id="analytics-attendance">0%</strong></div>
+  <div class="card stat-card"><span>CGPA</span><strong id="analytics-cgpa">0.00</strong></div>
+  <div class="card stat-card"><span>Planner progress</span><strong id="analytics-planner">0%</strong></div>
+  <div class="card stat-card"><span>Focus sessions</span><strong id="analytics-focus">0</strong></div>
+  <div class="card stat-card"><span>Productivity score</span><strong id="analytics-productivity">0%</strong></div>
+</section>
+
+<section class="card panel-block">
+  <div class="panel-header"><h3>Local academic trends</h3></div>
+  <div id="analytics-summary" class="summary-list"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}

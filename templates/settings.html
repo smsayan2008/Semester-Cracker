@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Settings | Semester Cracker{% endblock %}
+{% block page_heading %}Settings{% endblock %}
+{% block content %}
+<section class="settings-grid">
+  <div class="card panel-block">
+    <div class="panel-header"><h3>Workspace</h3></div>
+    <div class="settings-list">
+      <div class="setting-row">
+        <span>Guest workspace</span>
+        <strong id="guest-workspace-name">Local-only session</strong>
+      </div>
+      <div class="setting-row">
+        <span>Browser ID</span>
+        <strong id="browser-id">-</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="card panel-block">
+    <div class="panel-header"><h3>Appearance</h3></div>
+    <div class="toggle-group">
+      <button type="button" class="secondary-btn theme-choice" data-theme="light">Light</button>
+      <button type="button" class="secondary-btn theme-choice" data-theme="dark">Dark</button>
+    </div>
+  </div>
+
+  <div class="card panel-block">
+    <div class="panel-header"><h3>Data management</h3></div>
+    <div class="settings-actions">
+      <button id="backup-data" class="primary-btn" type="button">Backup</button>
+      <label class="secondary-btn file-label">
+        <input id="restore-file" type="file" accept="application/json" />
+        Restore
+      </label>
+      <button id="reset-data" class="danger-btn" type="button">Reset App Data</button>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

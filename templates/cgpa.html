@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}CGPA | Semester Cracker{% endblock %}
+{% block page_heading %}CGPA{% endblock %}
+{% block content %}
+<section class="page-section card">
+  <div class="panel-header">
+    <h3>Academic Performance</h3>
+    <span class="pill neutral" id="cgpa-overview">CGPA: 0.00</span>
+  </div>
+
+  <form id="cgpa-form" class="form-grid">
+    <input type="hidden" id="cgpa-subject-id" />
+    <label><span>Semester</span><input id="cgpa-semester" placeholder="Semester 5" required /></label>
+    <label><span>Subject</span><input id="cgpa-subject" placeholder="Operating Systems" required /></label>
+    <label><span>Credits</span><input id="cgpa-credits" type="number" step="0.5" min="0" required /></label>
+    <label><span>Grade</span><select id="cgpa-grade">
+      <option value="A+">A+</option>
+      <option value="A">A</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B">B</option>
+      <option value="B-">B-</option>
+      <option value="C+">C+</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="F">F</option>
+    </select></label>
+    <div class="form-actions full-width">
+      <button type="submit" class="primary-btn">Save Subject</button>
+      <button type="button" class="secondary-btn" id="cgpa-reset">Clear</button>
+    </div>
+  </form>
+</section>
+
+<section class="page-section card">
+  <div class="panel-header">
+    <h3>Semester breakdown</h3>
+  </div>
+  <div id="cgpa-list" class="cgpa-list"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/cgpa.js') }}"></script>
+{% endblock %}

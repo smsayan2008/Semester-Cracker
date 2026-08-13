@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Attendance | Semester Cracker{% endblock %}
+{% block page_heading %}Attendance{% endblock %}
+{% block content %}
+<section class="page-section card">
+  <div class="panel-header">
+    <h3>Attendance Tracker</h3>
+    <span class="pill neutral" id="overall-attendance-pill">Overall: 0%</span>
+  </div>
+
+  <form id="attendance-form" class="form-grid">
+    <input type="hidden" id="attendance-id" />
+    <label><span>Subject</span><input id="attendance-subject" required /></label>
+    <label><span>Total classes</span><input id="attendance-total" type="number" min="0" required /></label>
+    <label><span>Attended</span><input id="attendance-attended" type="number" min="0" required /></label>
+    <label><span>Absent</span><input id="attendance-absent" type="number" min="0" required /></label>
+    <div class="form-actions full-width">
+      <button type="submit" class="primary-btn">Save Subject</button>
+      <button type="button" class="secondary-btn" id="attendance-reset">Clear</button>
+    </div>
+  </form>
+</section>
+
+<section class="page-section card">
+  <div class="panel-header">
+    <h3>Subject-wise performance</h3>
+  </div>
+  <div id="attendance-list" class="attendance-list"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/attendance.js') }}"></script>
+{% endblock %}

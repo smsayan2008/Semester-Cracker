@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Notes | Semester Cracker{% endblock %}
+{% block page_heading %}Notes{% endblock %}
+{% block content %}
+<section class="page-section card">
+  <div class="panel-header">
+    <h3>Notes</h3>
+  </div>
+
+  <form id="note-form" class="form-grid">
+    <input type="hidden" id="note-id" />
+    <label><span>Title</span><input id="note-title" required /></label>
+    <label><span>Subject</span><input id="note-subject" placeholder="Mathematics" /></label>
+    <label class="full-width"><span>Content</span><textarea id="note-content" rows="6" required></textarea></label>
+    <div class="form-actions full-width">
+      <button type="submit" class="primary-btn">Save Note</button>
+      <button type="button" class="secondary-btn" id="note-reset">Clear</button>
+    </div>
+  </form>
+</section>
+
+<section class="page-section card">
+  <div class="panel-header compact">
+    <h3>Notebook</h3>
+    <div class="toolbar">
+      <input id="note-search" type="search" placeholder="Search notes" />
+      <select id="note-filter">
+        <option value="all">All subjects</option>
+      </select>
+    </div>
+  </div>
+  <div id="notes-list" class="notes-list"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/notes.js') }}"></script>
+{% endblock %}

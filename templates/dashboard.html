@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | Semester Cracker{% endblock %}
+{% block page_heading %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-grid">
+  <section class="hero-panel card">
+    <div>
+      <p class="eyebrow">Academic overview</p>
+      <h3>Welcome to your guest workspace</h3>
+      <p id="guest-workspace-text">Your local study environment is ready and isolated to this browser/device.</p>
+    </div>
+    <div class="hero-badge">
+      <span class="status-dot online"></span>
+      Guest Workspace Active
+    </div>
+  </section>
+
+  <div class="stats-grid">
+    <div class="stat-card card accent-blue">
+      <span>Total Tasks</span>
+      <strong id="stat-total-tasks">0</strong>
+    </div>
+    <div class="stat-card card accent-green">
+      <span>Completed</span>
+      <strong id="stat-completed-tasks">0</strong>
+    </div>
+    <div class="stat-card card accent-purple">
+      <span>Notes</span>
+      <strong id="stat-note-count">0</strong>
+    </div>
+    <div class="stat-card card accent-gold">
+      <span>Attendance</span>
+      <strong id="stat-attendance">0%</strong>
+    </div>
+    <div class="stat-card card accent-teal">
+      <span>Current CGPA</span>
+      <strong id="stat-cgpa">0.00</strong>
+    </div>
+    <div class="stat-card card accent-pink">
+      <span>Study Plans</span>
+      <strong id="stat-study-plans">0</strong>
+    </div>
+    <div class="stat-card card accent-orange">
+      <span>Pomodoro</span>
+      <strong id="stat-pomodoro">0</strong>
+    </div>
+  </div>
+
+  <div class="two-col-grid">
+    <section class="card panel-block">
+      <div class="panel-header">
+        <h3>Today's tasks</h3>
+      </div>
+      <div id="today-tasks" class="list-stack"></div>
+    </section>
+
+    <section class="card panel-block">
+      <div class="panel-header">
+        <h3>Upcoming tasks</h3>
+      </div>
+      <div id="upcoming-tasks" class="list-stack"></div>
+    </section>
+  </div>
+
+  <div class="two-col-grid">
+    <section class="card panel-block">
+      <div class="panel-header">
+        <h3>Recent notes</h3>
+      </div>
+      <div id="recent-notes" class="list-stack"></div>
+    </section>
+
+    <section class="card panel-block">
+      <div class="panel-header">
+        <h3>Quick Actions</h3>
+      </div>
+      <div class="quick-actions">
+        <a href="/tasks" class="action-chip">+ New Task</a>
+        <a href="/notes" class="action-chip">+ New Note</a>
+        <a href="/attendance" class="action-chip">Update Attendance</a>
+        <a href="/planner" class="action-chip">Plan Study</a>
+        <a href="/pomodoro" class="action-chip">Focus Mode</a>
+        <a href="/backup" class="action-chip hidden">Backup</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="card panel-block">
+    <div class="panel-header">
+      <h3>Productivity overview</h3>
+    </div>
+    <div class="productivity-grid">
+      <div>
+        <p>Task completion</p>
+        <div class="progress-bar"><span id="task-completion-bar" style="width:0%"></span></div>
+      </div>
+      <div>
+        <p>Planner progress</p>
+        <div class="progress-bar"><span id="planner-progress-bar" style="width:0%"></span></div>
+      </div>
+      <div>
+        <p>Attendance health</p>
+        <div class="progress-bar"><span id="attendance-health-bar" style="width:0%"></span></div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
